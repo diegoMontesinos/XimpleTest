@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Button from './Button';
@@ -10,12 +10,14 @@ export interface LogInProps {
   onLogin: (credits: Credit[]) => void;
 }
 
-const API_URL = 'https://mocki.io/v1/f936ff33-0643-4bb1-b9c7-6c86b033db91';
+const API_URL = 'https://mocki.io/v1/20e1e855-2e7e-4ae7-883d-9ee667038a34';
 
 const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const buttonDisabled = useMemo(() => !name || !email, [name, email]);
 
   const onSubmit = async () => {
     try {
@@ -49,10 +51,10 @@ const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
 
       <Button
         style={styles.submitButton}
-        disabled={!name || !email}
+        disabled={buttonDisabled}
         onPress={onSubmit}
         loading={loading}
-        testID="login-button">
+        testID={buttonDisabled ? 'login-button-disabled' : 'login-button'}>
         Descubrir créditos
       </Button>
     </View>

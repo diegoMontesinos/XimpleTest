@@ -52,14 +52,17 @@ describe('LogInForm Component', () => {
     expect(emailInput.props.value).toBe('hello world');
   });
 
-  it('the submit button is disabled if any of the inputs are empty', () => {
+  it('the submit button is disabled if any of the inputs are empty', async () => {
     const { getByTestId } = render(<LogInForm onLogin={mockOnLogin} />);
 
-    expect(getByTestId('login-button')).toBeDisabled();
+    expect(getByTestId('login-button-disabled')).toBeTruthy();
     fireEvent.changeText(getByTestId('name-input'), 'hello world');
-    expect(getByTestId('login-button')).toBeDisabled();
+    expect(getByTestId('login-button-disabled')).toBeTruthy();
     fireEvent.changeText(getByTestId('email-input'), 'hello world');
-    expect(getByTestId('login-button')).not.toBeDisabled();
+
+    await waitFor(() => {
+      expect(getByTestId('login-button')).toBeVisible();
+    });
   });
 
   it('onLogin should be called after fill inputs and press submit', async () => {

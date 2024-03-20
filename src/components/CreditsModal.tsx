@@ -26,7 +26,8 @@ const CreditsModal: React.FC<CreditsModalProps> = ({
         visible={visible}
         dismissable={false}
         style={styles.modal}
-        contentContainerStyle={styles.modalContainer}>
+        contentContainerStyle={styles.modalContainer}
+        testID="credits-modal">
         <Text variant="headlineSmall">¡Felicidades!</Text>
         <Text variant="bodySmall" style={styles.description}>
           Encontramos estos créditos perfectos para ti:
