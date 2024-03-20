@@ -12,6 +12,8 @@ const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    primary: '#1676F3',
+    outline: 'rgba(28, 55, 90, 0.16)',
   },
   fonts: configureFonts({
     config: {
@@ -29,14 +31,16 @@ const theme = {
   }),
 };
 
-const App: React.FC = () => (
-  <SafeAreaProvider>
-    <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <Navigation />
-      </NavigationContainer>
-    </PaperProvider>
-  </SafeAreaProvider>
-);
+const App: React.FC = () => {
+  return (
+    <SafeAreaProvider>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </PaperProvider>
+    </SafeAreaProvider>
+  );
+};
 
 export default App;

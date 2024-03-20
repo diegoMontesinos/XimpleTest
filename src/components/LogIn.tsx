@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import TextInput from './TextInput';
+import Button from './shared/Button';
+import TextInput from './shared/TextInput';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,6 +10,9 @@ const styles = StyleSheet.create({
   },
   emailInput: {
     marginTop: 16,
+  },
+  submitButton: {
+    marginTop: 32,
   },
 });
 
@@ -30,6 +34,8 @@ const LogIn: React.FC = () => {
         onChangeText={(text) => setEmail(text)}
         style={styles.emailInput}
       />
+
+      <Button style={styles.submitButton}>Descubrir créditos</Button>
     </View>
   );
 };

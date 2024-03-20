@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    marginTop: 40,
+    marginTop: 32,
   },
   description: {
     marginTop: 8,
