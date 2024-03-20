@@ -30,7 +30,10 @@ const CreditRadioButton: React.FC<CreditRadioButtonProps> = ({
 
   return (
     <Surface style={[styles.surface, surfaceStyle, style]} elevation={0}>
-      <TouchableRipple theme={theme} onPress={onPress}>
+      <TouchableRipple
+        theme={theme}
+        onPress={onPress}
+        testID={`radio-button-${credit.name}`}>
         <View style={styles.content}>
           <Text variant="titleMedium" style={textStyle}>
             {credit.name}

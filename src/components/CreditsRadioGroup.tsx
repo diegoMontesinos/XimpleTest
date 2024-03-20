@@ -17,7 +17,7 @@ const CreditsRadioGroup: React.FC<CreditsRadioGroupProps> = ({
   selection,
   onChangeSelection,
 }) => (
-  <View style={style}>
+  <View style={style} testID="credits-radio-group">
     {credits.map((credit, index) => (
       <CreditRadioButton
         key={credit.name}

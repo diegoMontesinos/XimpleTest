@@ -42,7 +42,8 @@ const CreditsModal: React.FC<CreditsModalProps> = ({
         <Button
           disabled={!credit}
           style={styles.submitButton}
-          onPress={() => credit && onConfirmSelection(credit)}>
+          onPress={() => credit && onConfirmSelection(credit)}
+          testID="select-button">
           Seleccionar crédito
         </Button>
       </Modal>
