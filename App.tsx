@@ -23,6 +23,7 @@ const theme = {
       },
       bodySmall: {
         fontFamily: 'Inter',
+        letterSpacing: 0,
       },
       labelMedium: {
         fontFamily: 'PlusJakartaSans',

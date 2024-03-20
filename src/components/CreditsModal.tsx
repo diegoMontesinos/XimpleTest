@@ -1,33 +1,53 @@
+import { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Modal, Portal, Text } from 'react-native-paper';
+import { Modal, ModalProps, Portal, Text } from 'react-native-paper';
+
+import Button from './shared/Button';
 
 import { Credit } from '../types';
 
-export interface CreditsModalProps {
-  visible: boolean;
+export interface CreditsModalProps extends Omit<ModalProps, 'children'> {
   credits: Credit[];
-  onDismiss?: () => void;
 }
 
 const CreditsModal: React.FC<CreditsModalProps> = ({
   visible,
   credits,
-  onDismiss,
+  ...rest
 }) => {
+  const [credit, setCredit] = useState<Credit | undefined>(undefined);
+
   return (
     <Portal>
       <Modal
         visible={visible}
-        onDismiss={onDismiss}
-        contentContainerStyle={styles.container}>
-        <Text>Example Modal. Click outside this area to dismiss.</Text>
+        style={styles.modal}
+        contentContainerStyle={styles.modalContainer}
+        {...rest}>
+        <Text variant="headlineSmall">¡Felicidades!</Text>
+        <Text variant="bodySmall" style={styles.description}>
+          Encontramos estos créditos perfectos para ti:
+        </Text>
+
+        <Button disabled={!credit}>Seleccionar crédito</Button>
       </Modal>
     </Portal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: 'white', padding: 20 },
+  modal: {
+    marginHorizontal: 24,
+  },
+  modalContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 16,
+  },
+  description: {
+    marginTop: 8,
+    color: '#7A7A7A',
+  },
 });
 
 export default CreditsModal;

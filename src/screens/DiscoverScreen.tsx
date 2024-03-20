@@ -10,10 +10,26 @@ import LogIn from '../components/LogIn';
 import { Credit } from '../types';
 
 const DiscoverScreen: React.FC = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [credits, setCredits] = useState<Credit[]>([]);
+  const [modalVisible, setModalVisible] = useState(true);
+  const [credits, setCredits] = useState<Credit[]>([
+    {
+      name: 'Crédito 1',
+      price: 500,
+    },
+    {
+      name: 'Crédito 2',
+      price: 1500,
+    },
+    {
+      name: 'Crédito 3',
+      price: 2500,
+    },
+  ]);
 
-  const handleLogin = (credits: Credit[]) => setCredits([...credits]);
+  const handleLogin = (credits: Credit[]) => {
+    setCredits([...credits]);
+    setModalVisible(true);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,7 +43,11 @@ const DiscoverScreen: React.FC = () => {
 
       <LogIn onLogin={handleLogin} />
 
-      <CreditsModal visible={modalVisible} credits={credits} />
+      <CreditsModal
+        visible={modalVisible}
+        credits={credits}
+        dismissable={false}
+      />
     </SafeAreaView>
   );
 };
