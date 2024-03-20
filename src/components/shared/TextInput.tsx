@@ -1,10 +1,4 @@
-import {
-  StyleProp,
-  StyleSheet,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import {
   Text,
   TextInput as RNPTextInput,
@@ -16,6 +10,23 @@ export interface TextInputProps
   label: string;
   style?: StyleProp<ViewStyle>;
 }
+
+const TextInput: React.FC<TextInputProps> = ({ label, style, ...rest }) => (
+  <View style={style}>
+    <Text variant="labelMedium" style={styles.label}>
+      {label}
+    </Text>
+    <RNPTextInput
+      {...rest}
+      mode="outlined"
+      style={styles.input}
+      outlineStyle={styles.inputOutline}
+      autoCapitalize="none"
+      keyboardType="email-address"
+      textContentType="emailAddress"
+    />
+  </View>
+);
 
 const styles = StyleSheet.create({
   label: {
@@ -34,22 +45,5 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
 });
-
-const TextInput: React.FC<TextInputProps> = ({ label, style, ...rest }) => (
-  <View style={style}>
-    <Text variant="labelMedium" style={styles.label}>
-      {label}
-    </Text>
-    <RNPTextInput
-      {...rest}
-      mode="outlined"
-      style={styles.input}
-      outlineStyle={styles.inputOutline}
-      autoCapitalize="none"
-      keyboardType="email-address"
-      textContentType="emailAddress"
-    />
-  </View>
-);
 
 export default TextInput;

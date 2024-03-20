@@ -31,16 +31,14 @@ const theme = {
   }),
 };
 
-const App: React.FC = () => {
-  return (
-    <SafeAreaProvider>
-      <PaperProvider theme={theme}>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      </PaperProvider>
-    </SafeAreaProvider>
-  );
-};
+const App: React.FC = () => (
+  <SafeAreaProvider>
+    <PaperProvider theme={theme}>
+      <NavigationContainer>
+        <Navigation />
+      </NavigationContainer>
+    </PaperProvider>
+  </SafeAreaProvider>
+);
 
 export default App;

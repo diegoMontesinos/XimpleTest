@@ -6,8 +6,21 @@ import {
 
 export interface ButtonProps extends RNPButtonProps {}
 
+const Button: React.FC<ButtonProps> = ({ style, ...rest }) => (
+  <RNPButton
+    {...rest}
+    mode="contained"
+    style={[styles.button, style]}
+    labelStyle={styles.label}
+    contentStyle={styles.buttonContent}
+  />
+);
+
 const styles = StyleSheet.create({
   button: {
+    borderRadius: 4,
+  },
+  buttonContent: {
     height: 56,
     borderRadius: 4,
     justifyContent: 'center',
@@ -19,14 +32,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
-
-const Button: React.FC<ButtonProps> = ({ style, ...rest }) => (
-  <RNPButton
-    {...rest}
-    style={[styles.button, style]}
-    mode="contained"
-    labelStyle={styles.label}
-  />
-);
 
 export default Button;
