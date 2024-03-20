@@ -4,4 +4,5 @@ module.exports = {
     'node_modules/(?!(react-native|@react-native|@react-navigation)/)',
   ],
   setupFiles: ['<rootDir>/jest/setup.js'],
+  modulePathIgnorePatterns: ['e2e'],
 };
