@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Modal, ModalProps, Portal, Text } from 'react-native-paper';
 
 import Button from './shared/Button';
+import CreditsRadioGroup from './CreditsRadioGroup';
 
 import { Credit } from '../types';
 
@@ -29,7 +30,11 @@ const CreditsModal: React.FC<CreditsModalProps> = ({
           Encontramos estos créditos perfectos para ti:
         </Text>
 
-        <Button disabled={!credit}>Seleccionar crédito</Button>
+        <CreditsRadioGroup credits={credits} style={styles.radioGroup} />
+
+        <Button disabled={!credit} style={styles.submitButton}>
+          Seleccionar crédito
+        </Button>
       </Modal>
     </Portal>
   );
@@ -43,10 +48,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 16,
     padding: 16,
+    paddingBottom: 72,
   },
   description: {
     marginTop: 8,
     color: '#7A7A7A',
+  },
+  radioGroup: {
+    marginTop: 24,
+  },
+  submitButton: {
+    marginTop: 40,
   },
 });
 

@@ -28,6 +28,11 @@ const theme = {
       labelMedium: {
         fontFamily: 'PlusJakartaSans',
       },
+      titleMedium: {
+        fontFamily: 'PlusJakartaSans',
+        fontWeight: '600',
+        letterSpacing: 0,
+      },
     },
   }),
 };

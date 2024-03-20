@@ -1,49 +1,27 @@
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { Text, TouchableRipple, useTheme } from 'react-native-paper';
+import { StyleProp, View, ViewStyle } from 'react-native';
 
 import { Credit } from '../types';
 
 export interface CreditsRadioGroupProps {
   credits: Credit[];
-  selection?: Credit;
-  onSelectionChange: (credit: Credit) => void;
-  style: StyleProp<ViewStyle>;
-  buttonStyle: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 }
 
 const CreditsRadioGroup: React.FC<CreditsRadioGroupProps> = ({
   credits,
-  selection,
-  onSelectionChange,
   style,
-  buttonStyle,
-}) => {
-  const theme = useTheme();
-  return (
-    <View style={style}>
-      {credits.map((credit) => (
-        <TouchableRipple
-          key={credit.name}
-          onPress={() => onSelectionChange(credit)}
-          theme={theme}>
-          <View style={[styles.container, buttonStyle]} pointerEvents="none">
-            <Text>{credit.name}</Text>
-            <Text>${credit.price}</Text>
-          </View>
-        </TouchableRipple>
-      ))}
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-  },
-});
+}) => (
+  <View style={style}>
+    {credits.map((credit, index) => (
+      <CreditRadioButton
+        key={credit.name}
+        credit={credit}
+        style={{
+          marginTop: index === 0 ? 0 : 8,
+        }}
+      />
+    ))}
+  </View>
+);
 
 export default CreditsRadioGroup;
