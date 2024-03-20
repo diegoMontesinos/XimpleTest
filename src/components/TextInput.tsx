@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     color: 'rgba(27, 43, 65, 0.72)',
   },
   input: {
-    height: 56,
+    height: 60,
     fontSize: 14,
     fontFamily: 'PlusJakartaSans',
     fontWeight: '500',

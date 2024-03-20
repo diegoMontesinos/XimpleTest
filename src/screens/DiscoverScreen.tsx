@@ -55,9 +55,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#fff',
   },
   title: {
-    marginTop: 32,
+    marginTop: 36,
   },
   description: {
     marginTop: 8,

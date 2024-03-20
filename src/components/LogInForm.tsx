@@ -31,7 +31,7 @@ const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="login-form">
       <TextInput
         label="Nombre"
         value={name}
@@ -58,13 +58,13 @@ const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 32,
+    marginTop: 36,
   },
   emailInput: {
     marginTop: 16,
   },
   submitButton: {
-    marginTop: 32,
+    marginTop: 40,
   },
 });
 

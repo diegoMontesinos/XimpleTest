@@ -21,9 +21,13 @@ export const theme = {
       headlineSmall: {
         fontFamily: 'Inter',
         fontWeight: '700',
+        fontSize: 24,
+        letterSpacing: 0,
       },
       bodySmall: {
         fontFamily: 'Inter',
+        fontWeight: '400',
+        fontSize: 12,
         letterSpacing: 0,
       },
       labelMedium: {

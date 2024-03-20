@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     fontFamily: 'PlusJakartaSans',
     fontSize: 16,
     fontWeight: '600',
+    letterSpacing: 0,
   },
 });
 
