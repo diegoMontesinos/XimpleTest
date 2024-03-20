@@ -14,9 +14,11 @@ export type StackParamList = {
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
-const Navigation: React.FC = () => (
+const Navigation: React.FC<{
+  initialRouteName?: keyof StackParamList | undefined;
+}> = ({ initialRouteName }) => (
   <Stack.Navigator
-    initialRouteName="Accept"
+    initialRouteName={initialRouteName ?? 'Discover'}
     screenOptions={{
       headerShown: false,
     }}>
@@ -26,8 +28,8 @@ const Navigation: React.FC = () => (
       component={AcceptScreen}
       initialParams={{
         credit: {
-          name: 'Crédito 1',
-          price: 1200,
+          name: '',
+          price: 0,
         },
       }}
     />

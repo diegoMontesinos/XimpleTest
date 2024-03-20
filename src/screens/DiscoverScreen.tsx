@@ -6,8 +6,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { StackParamList } from '../Navigation';
 
-import CreditsModal from '../components/discover/CreditsModal';
-import LogInForm from '../components/discover/LogInForm';
+import CreditsModal from '../components/CreditsModal';
+import LogInForm from '../components/LogInForm';
 
 import { Credit } from '../types';
 

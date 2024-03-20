@@ -2,7 +2,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 
 import CreditRadioButton from './CreditRadioButton';
 
-import { Credit } from '../../types';
+import { Credit } from '../types';
 
 export interface CreditsRadioGroupProps {
   credits: Credit[];

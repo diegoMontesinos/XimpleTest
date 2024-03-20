@@ -1,7 +1,7 @@
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { Surface, Text, TouchableRipple, useTheme } from 'react-native-paper';
 
-import { Credit } from '../../types';
+import { Credit } from '../types';
 
 export interface CreditRadioButtonProps {
   credit: Credit;

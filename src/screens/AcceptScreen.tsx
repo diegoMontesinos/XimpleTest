@@ -5,8 +5,8 @@ import { Text } from 'react-native-paper';
 
 import { StackParamList } from '../Navigation';
 
-import Button from '../components/shared/Button';
-import CreditRadioButton from '../components/discover/CreditRadioButton';
+import Button from '../components/Button';
+import CreditRadioButton from '../components/CreditRadioButton';
 
 export type AcceptScreenProps = NativeStackScreenProps<
   StackParamList,

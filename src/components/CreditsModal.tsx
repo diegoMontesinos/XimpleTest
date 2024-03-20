@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Modal, Portal, Text } from 'react-native-paper';
 
-import Button from '../shared/Button';
+import Button from './Button';
 import CreditsRadioGroup from './CreditsRadioGroup';
 
-import { Credit } from '../../types';
+import { Credit } from '../types';
 
 export interface CreditsModalProps {
   credits: Credit[];

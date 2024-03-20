@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Button from '../shared/Button';
-import TextInput from '../shared/TextInput';
+import Button from './Button';
+import TextInput from './TextInput';
 
-import { Credit } from '../../types';
+import { Credit } from '../types';
 
 export interface LogInProps {
   onLogin: (credits: Credit[]) => void;
