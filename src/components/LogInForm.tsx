@@ -10,7 +10,7 @@ export interface LogInProps {
   onLogin: (credits: Credit[]) => void;
 }
 
-const API_URL = 'https://mocki.io/v1/20e1e855-2e7e-4ae7-883d-9ee667038a34';
+const API_URL = 'https://mocki.io/v1/d8f3bc2c-6ed8-4eec-ad22-0bc21999386d';
 
 const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
   const [name, setName] = useState('');

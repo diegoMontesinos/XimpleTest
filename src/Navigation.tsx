@@ -28,6 +28,7 @@ const Navigation: React.FC<{
       component={AcceptScreen}
       initialParams={{
         credit: {
+          id: '123',
           name: 'Dummy credit',
           price: 3100,
         },

@@ -33,7 +33,7 @@ const CreditRadioButton: React.FC<CreditRadioButtonProps> = ({
       <TouchableRipple
         theme={theme}
         onPress={onPress}
-        testID={`radio-button-${credit.name}`}>
+        testID={`radio-button-${credit.id}`}>
         <View style={styles.content}>
           <Text variant="titleMedium" style={textStyle}>
             {credit.name}
