@@ -27,7 +27,9 @@ const AcceptScreen: React.FC<AcceptScreenProps> = ({ route }) => (
     </Text>
     <CreditRadioButton credit={route.params.credit} />
 
-    <Button style={styles.submitButton}>Contratar</Button>
+    <Button testID="submit-button" style={styles.submitButton}>
+      Contratar
+    </Button>
   </SafeAreaView>
 );
 

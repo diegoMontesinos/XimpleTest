@@ -28,8 +28,8 @@ const Navigation: React.FC<{
       component={AcceptScreen}
       initialParams={{
         credit: {
-          name: '',
-          price: 0,
+          name: 'Dummy credit',
+          price: 3100,
         },
       }}
     />
