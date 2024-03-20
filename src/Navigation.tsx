@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator<StackParamList>();
 
 const Navigation: React.FC = () => (
   <Stack.Navigator
-    initialRouteName="Discover"
+    initialRouteName="Accept"
     screenOptions={{
       headerShown: false,
     }}>
@@ -26,8 +26,8 @@ const Navigation: React.FC = () => (
       component={AcceptScreen}
       initialParams={{
         credit: {
-          name: '',
-          price: 0,
+          name: 'Crédito 1',
+          price: 1200,
         },
       }}
     />
