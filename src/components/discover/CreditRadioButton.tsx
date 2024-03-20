@@ -1,7 +1,7 @@
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { Surface, Text, TouchableRipple, useTheme } from 'react-native-paper';
 
-import { Credit } from '../types';
+import { Credit } from '../../types';
 
 export interface CreditRadioButtonProps {
   credit: Credit;
@@ -58,21 +58,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
 });
-
-// const styles = StyleSheet.create({
-//   radioButton: {
-//     height: 43,
-//     borderRadius: 4,
-//   },
-//   radioButtonContent: {
-//     height: 43,
-//     borderRadius: 4,
-//     // backgroundColor: 'red',
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//     paddingHorizontal: 8,
-//   },
-// });
 
 export default CreditRadioButton;

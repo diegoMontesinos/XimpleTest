@@ -2,12 +2,12 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 
 import CreditRadioButton from './CreditRadioButton';
 
-import { Credit } from '../types';
+import { Credit } from '../../types';
 
 export interface CreditsRadioGroupProps {
   credits: Credit[];
-  selection?: Credit;
   onChangeSelection: (selection: Credit) => void;
+  selection?: Credit;
   style?: StyleProp<ViewStyle>;
 }
 

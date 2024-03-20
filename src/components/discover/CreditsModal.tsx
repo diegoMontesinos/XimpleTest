@@ -1,22 +1,22 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Modal, ModalProps, Portal, Text } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import { Modal, Portal, Text } from 'react-native-paper';
 
-import Button from './shared/Button';
+import Button from '../shared/Button';
 import CreditsRadioGroup from './CreditsRadioGroup';
 
-import { Credit } from '../types';
+import { Credit } from '../../types';
 
-export interface CreditsModalProps extends Omit<ModalProps, 'children'> {
+export interface CreditsModalProps {
   credits: Credit[];
   onConfirmSelection: (credit: Credit) => void;
+  visible: boolean;
 }
 
 const CreditsModal: React.FC<CreditsModalProps> = ({
   visible,
   credits,
   onConfirmSelection,
-  ...rest
 }) => {
   const [credit, setCredit] = useState<Credit | undefined>(undefined);
 
@@ -24,9 +24,9 @@ const CreditsModal: React.FC<CreditsModalProps> = ({
     <Portal>
       <Modal
         visible={visible}
+        dismissable={false}
         style={styles.modal}
-        contentContainerStyle={styles.modalContainer}
-        {...rest}>
+        contentContainerStyle={styles.modalContainer}>
         <Text variant="headlineSmall">¡Felicidades!</Text>
         <Text variant="bodySmall" style={styles.description}>
           Encontramos estos créditos perfectos para ti:

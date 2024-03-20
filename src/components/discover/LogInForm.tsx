@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Button from './shared/Button';
-import TextInput from './shared/TextInput';
+import Button from '../shared/Button';
+import TextInput from '../shared/TextInput';
 
-import { Credit } from '../types';
+import { Credit } from '../../types';
 
 export interface LogInProps {
   onLogin: (credits: Credit[]) => void;
@@ -12,7 +12,7 @@ export interface LogInProps {
 
 const API_URL = 'https://mocki.io/v1/f936ff33-0643-4bb1-b9c7-6c86b033db91';
 
-const LogIn: React.FC<LogInProps> = ({ onLogin }) => {
+const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -68,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LogIn;
+export default LogInForm;

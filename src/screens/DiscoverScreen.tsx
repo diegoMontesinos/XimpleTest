@@ -1,34 +1,25 @@
 import { useState } from 'react';
-
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import CreditsModal from '../components/CreditsModal';
-import LogIn from '../components/LogIn';
+import CreditsModal from '../components/discover/CreditsModal';
+import LogInForm from '../components/discover/LogInForm';
 
 import { Credit } from '../types';
 
 const DiscoverScreen: React.FC = () => {
-  const [modalVisible, setModalVisible] = useState(true);
-  const [credits, setCredits] = useState<Credit[]>([
-    {
-      name: 'Crédito 1',
-      price: 500,
-    },
-    {
-      name: 'Crédito 2',
-      price: 1500,
-    },
-    {
-      name: 'Crédito 3',
-      price: 2500,
-    },
-  ]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [credits, setCredits] = useState<Credit[]>([]);
 
   const handleLogin = (credits: Credit[]) => {
     setCredits([...credits]);
     setModalVisible(true);
+  };
+
+  const handleConfirmSelection = (credit: Credit) => {
+    console.log(credit);
+    setModalVisible(false);
   };
 
   return (
@@ -41,12 +32,12 @@ const DiscoverScreen: React.FC = () => {
         disponibles para ti.
       </Text>
 
-      <LogIn onLogin={handleLogin} />
+      <LogInForm onLogin={handleLogin} />
 
       <CreditsModal
         visible={modalVisible}
         credits={credits}
-        dismissable={false}
+        onConfirmSelection={handleConfirmSelection}
       />
     </SafeAreaView>
   );
