@@ -36,6 +36,7 @@ const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
         label="Nombre"
         value={name}
         onChangeText={(text) => setName(text)}
+        testID="name-input"
       />
 
       <TextInput
@@ -43,13 +44,15 @@ const LogInForm: React.FC<LogInProps> = ({ onLogin }) => {
         value={email}
         onChangeText={(text) => setEmail(text)}
         style={styles.emailInput}
+        testID="email-input"
       />
 
       <Button
         style={styles.submitButton}
         disabled={!name || !email}
         onPress={onSubmit}
-        loading={loading}>
+        loading={loading}
+        testID="login-button">
         Descubrir créditos
       </Button>
     </View>
