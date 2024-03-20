@@ -3,12 +3,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DiscoverScreen from './screens/DiscoverScreen';
 import AcceptScreen from './screens/AcceptScreen';
 
-export type RootStackParamList = {
+import { Credit } from './types';
+
+export type StackParamList = {
   Discover: undefined;
-  Accept: undefined;
+  Accept: {
+    credit: Credit;
+  };
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<StackParamList>();
 
 const Navigation: React.FC = () => (
   <Stack.Navigator
@@ -17,7 +21,16 @@ const Navigation: React.FC = () => (
       headerShown: false,
     }}>
     <Stack.Screen name="Discover" component={DiscoverScreen} />
-    <Stack.Screen name="Accept" component={AcceptScreen} />
+    <Stack.Screen
+      name="Accept"
+      component={AcceptScreen}
+      initialParams={{
+        credit: {
+          name: '',
+          price: 0,
+        },
+      }}
+    />
   </Stack.Navigator>
 );
 

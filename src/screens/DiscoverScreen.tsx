@@ -2,13 +2,21 @@ import { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+
+import { StackParamList } from '../Navigation';
 
 import CreditsModal from '../components/discover/CreditsModal';
 import LogInForm from '../components/discover/LogInForm';
 
 import { Credit } from '../types';
 
-const DiscoverScreen: React.FC = () => {
+export type DiscoverScreenProps = NativeStackScreenProps<
+  StackParamList,
+  'Discover'
+>;
+
+const DiscoverScreen: React.FC<DiscoverScreenProps> = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [credits, setCredits] = useState<Credit[]>([]);
 
@@ -18,8 +26,8 @@ const DiscoverScreen: React.FC = () => {
   };
 
   const handleConfirmSelection = (credit: Credit) => {
-    console.log(credit);
     setModalVisible(false);
+    navigation.navigate('Accept', { credit });
   };
 
   return (

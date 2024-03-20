@@ -8,7 +8,7 @@ import {
 
 import Navigation from './src/Navigation';
 
-const theme = {
+export const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
