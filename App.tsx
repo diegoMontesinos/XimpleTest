@@ -14,6 +14,7 @@ const theme = {
     ...DefaultTheme.colors,
     primary: '#1676F3',
     outline: 'rgba(28, 55, 90, 0.16)',
+    primaryContainer: '#8EBCF7',
   },
   fonts: configureFonts({
     config: {

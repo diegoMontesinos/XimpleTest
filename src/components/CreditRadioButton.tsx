@@ -1,57 +1,78 @@
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
-import { Text, TouchableRipple, useTheme } from 'react-native-paper';
+import { Surface, Text, TouchableRipple, useTheme } from 'react-native-paper';
 
 import { Credit } from '../types';
 
 export interface CreditRadioButtonProps {
-  style?: StyleProp<ViewStyle>;
   credit: Credit;
+  style?: StyleProp<ViewStyle>;
+  selected?: boolean;
+  onPress?: () => void;
 }
 
 const CreditRadioButton: React.FC<CreditRadioButtonProps> = ({
   credit,
   style,
+  selected,
+  onPress,
 }) => {
   const theme = useTheme();
 
+  const surfaceStyle = {
+    backgroundColor: selected
+      ? theme.colors.primary
+      : theme.colors.primaryContainer,
+  };
+
+  const textStyle = {
+    color: theme.colors.onPrimary,
+  };
+
   return (
-    <TouchableRipple
-      borderless
-      // rippleColor={color(textColor).alpha(0.12).rgb().string()}
-      // style={touchableStyle}
-      style={[styles.radioButton, style]}
-      theme={theme}
-      onPress={() => {
-        console.log(123);
-      }}>
-      <View style={styles.radioButtonContent}>
-        <Text variant="titleMedium" style={{ color: theme.colors.onPrimary }}>
-          {credit.name}
-        </Text>
-        <Text
-          variant="titleMedium"
-          style={{
-            color: theme.colors.onPrimary,
-          }}>{`$${credit.price.toLocaleString()}`}</Text>
-      </View>
-    </TouchableRipple>
+    <Surface style={[styles.surface, surfaceStyle, style]} elevation={0}>
+      <TouchableRipple theme={theme} onPress={onPress}>
+        <View style={styles.content}>
+          <Text variant="titleMedium" style={textStyle}>
+            {credit.name}
+          </Text>
+          <Text variant="titleMedium" style={textStyle}>
+            {`$${credit.price.toLocaleString()}`}
+          </Text>
+        </View>
+      </TouchableRipple>
+    </Surface>
   );
 };
 
 const styles = StyleSheet.create({
-  radioButton: {
+  surface: {
     height: 43,
     borderRadius: 4,
   },
-  radioButtonContent: {
+  content: {
     height: 43,
     borderRadius: 4,
-    // backgroundColor: 'red',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 8,
   },
 });
+
+// const styles = StyleSheet.create({
+//   radioButton: {
+//     height: 43,
+//     borderRadius: 4,
+//   },
+//   radioButtonContent: {
+//     height: 43,
+//     borderRadius: 4,
+//     // backgroundColor: 'red',
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//     alignItems: 'center',
+//     paddingHorizontal: 8,
+//   },
+// });
 
 export default CreditRadioButton;

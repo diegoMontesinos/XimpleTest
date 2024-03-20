@@ -9,11 +9,13 @@ import { Credit } from '../types';
 
 export interface CreditsModalProps extends Omit<ModalProps, 'children'> {
   credits: Credit[];
+  onConfirmSelection: (credit: Credit) => void;
 }
 
 const CreditsModal: React.FC<CreditsModalProps> = ({
   visible,
   credits,
+  onConfirmSelection,
   ...rest
 }) => {
   const [credit, setCredit] = useState<Credit | undefined>(undefined);
@@ -30,9 +32,17 @@ const CreditsModal: React.FC<CreditsModalProps> = ({
           Encontramos estos créditos perfectos para ti:
         </Text>
 
-        <CreditsRadioGroup credits={credits} style={styles.radioGroup} />
+        <CreditsRadioGroup
+          credits={credits}
+          selection={credit}
+          onChangeSelection={(credit) => setCredit(credit)}
+          style={styles.radioGroup}
+        />
 
-        <Button disabled={!credit} style={styles.submitButton}>
+        <Button
+          disabled={!credit}
+          style={styles.submitButton}
+          onPress={() => credit && onConfirmSelection(credit)}>
           Seleccionar crédito
         </Button>
       </Modal>
