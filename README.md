@@ -125,3 +125,7 @@ yarn start
 ```sh
 npx detox test --configuration android.emu.debug
 ```
+
+## Author
+
+Diego Montesinos - diegoa.montesinos@gmail.com
