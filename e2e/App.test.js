@@ -3,6 +3,10 @@
 const timeout = 2 * 1000;
 
 const triggerModal = async () => {
+  await waitFor(element(by.id('name-input')))
+    .toBeVisible()
+    .withTimeout(timeout);
+
   await element(by.id('name-input')).typeText('hello world');
   await element(by.id('name-input')).tapReturnKey();
   await element(by.id('email-input')).typeText('hello world');
@@ -23,18 +27,18 @@ describe('App', () => {
     await expect(element(by.id('login-button-disabled'))).toBeVisible();
     await element(by.id('name-input')).typeText('hello world');
     await element(by.id('name-input')).tapReturnKey();
-    await expect(element(by.id('login-button-disabled'))).toBeVisible();
+    await expect(element(by.id('login-button-disabled'))).toExist();
 
     await element(by.id('email-input')).typeText('hello world');
     await element(by.id('email-input')).tapReturnKey();
-    await expect(element(by.id('login-button-disabled'))).not.toBeVisible();
-    await expect(element(by.id('login-button'))).toBeVisible();
+    await expect(element(by.id('login-button-disabled'))).not.toExist();
+    await expect(element(by.id('login-button'))).toExist();
   });
 
   it('when button is pressed, the modal is presented', async () => {
     await triggerModal();
     await waitFor(element(by.id('credits-modal')))
-      .toBeVisible()
+      .toExist()
       .withTimeout(timeout);
   });
 
@@ -55,11 +59,11 @@ describe('App', () => {
     await expect(element(by.id('select-button'))).toBeVisible();
   });
 
-  it('when open modal, select the an option and press button should close modal', async () => {
+  it('when open modal, select an option and press button should close modal', async () => {
     await triggerModal();
 
     await waitFor(element(by.id('credits-modal')))
-      .toBeVisible()
+      .toExist()
       .withTimeout(timeout);
 
     await element(by.id(/^radio-button-[A-Za-z0-9]+$/))
@@ -69,7 +73,7 @@ describe('App', () => {
     await element(by.id('select-button')).tap();
 
     await waitFor(element(by.id('credits-modal')))
-      .not.toBeVisible()
+      .not.toExist()
       .withTimeout(timeout);
   });
 

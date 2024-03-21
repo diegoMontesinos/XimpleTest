@@ -1,79 +1,127 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Ximple Test
 
-# Getting Started
+This is the code challenge for the Diego Montesinos's Ximple application. Is made with [React Native](https://reactnative.dev) and Typescript.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+In this document you will find info about how to setup your local, execute the app and run the tests.
 
-## Step 1: Start the Metro Server
+## Execute the app
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+In order to execute the project follow this steps:
 
-To start Metro, run the following command from the _root_ of your React Native project:
+1. Follow the [guide to setup the React Native environment](https://reactnative.dev/docs/environment-setup) till "Creating a new application" step.
+2. In a terminal, install the dependencies:
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+yarn install
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+3. For start the application in Android just:
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+yarn run android
 ```
 
-### For iOS
+4. For start the application in iOS. If is your first time running the application execute:
 
 ```bash
-# using npm
-npm run ios
+cd ios && pod install && cd ..
+```
 
-# OR using Yarn
-yarn ios
+And later execute:
+
+```bash
+yarn run ios
 ```
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## Unit testing and linting
 
-## Step 3: Modifying your App
+This project uses `eslint` for linting and `jest` + `@testing-library/react-native` for testing.
 
-Now that you have successfully run the app, let's modify it.
+For execute the linting you just need to execute:
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+```bash
+yarn lint
+```
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+And if you want to run the unit testing, execute:
 
-## Congratulations! :tada:
+```bash
+yarn test
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+The unit tests are in each `.test.tsx` file, and mocks are under the folder `__mocks__`.
 
-### Now what?
+## UI / E2E testing
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+The project uses [Detox](https://wix.github.io/Detox/) for E2E testing.
 
-# Troubleshooting
+### Detox setup environment
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+To setup your environment to run Detox tests:
 
-# Learn More
+1. [MacOS only] Be sure you have installed XCode and the iOS Simulator.
+2. [MacOS only] Install [applesimutils](https://github.com/wix/AppleSimulatorUtilshttps://github.com/wix/AppleSimulatorUtils) with the commands:
 
-To learn more about React Native, take a look at the following resources:
+```bash
+brew tap wix/brew
+brew install applesimutils
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+3. Create an Android simulator with the name `"Pixel_3a_API_30"`. If you wanna use another Android simulator change the `avdName` in the `.detoxrc.js` file:
+
+```js
+module.exports = {
+  ...
+  devices: {
+    ...
+    emulator: {
+      type: 'android.emulator',
+      device: {
+        avdName: 'Pixel_3a_API_30', // <- here
+      },
+    },
+  },
+  ...
+}
+```
+
+4. In a terminal, run the following commands for build:
+
+```sh
+npx detox build --configuration ios.sim.debug
+npx detox build --configuration android.emu.debug
+```
+
+For more information go to the [Detox guide](https://wix.github.io/Detox/docs/introduction/environment-setup).
+
+### Run the tests
+
+For running the tests in iOS:
+
+1. In a terminal, run:
+
+```sh
+yarn start
+```
+
+2. Open another terminal and run:
+
+```sh
+npx detox test --configuration ios.sim.debug
+```
+
+For running the tests in Android:
+
+1. In a terminal, run:
+
+```sh
+yarn start
+```
+
+2. Open another terminal and run:
+
+```sh
+npx detox test --configuration android.emu.debug
+```
